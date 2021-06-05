@@ -5,7 +5,7 @@ const initialState = [
   {
     id: "1",
     fName: "Muhammad",
-    lName: "Mazhar"
+    lName: "Ali"
   },
   {
     id: "2",
@@ -13,21 +13,21 @@ const initialState = [
     lName: "Rasheed"
   }, {
     id: "3",
-    fName: "Ch",
+    fName: "Chaudhry",
     lName: "azhrr"
   },
   {
     id: "4",
-    fName: "Agthh",
+    fName: "Suleman",
     lName: "Rasheed"
   } ,{
     id: "5",
     fName: "Lara",
-    lName: "ereeew"
+    lName: "Ramboo"
   },
   {
     id: "6",
-    fName: "Zamal",
+    fName: "Zara",
     lName: "Rasheed"
   }
 ]

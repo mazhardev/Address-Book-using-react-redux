@@ -15,6 +15,7 @@
     "redux": "^3.7.2",
     "redux-auth-wrapper": "^2.0.2",
     "redux-form": "^7.3.0",
+    "redux-persist": "^5.10.0",
     "redux-thunk": "^2.2.0",
     "revalidate": "^1.2.0",
     "semantic-ui-css": "2.2.14",

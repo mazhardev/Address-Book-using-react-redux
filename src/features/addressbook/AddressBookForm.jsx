@@ -32,14 +32,16 @@ class AddressBookForm extends Component {
   onFormSubmit = values => {
     if (this.props.initialValues.id) {
       this.props.update(values);
-      this.props.history.goBack();
+      //this.props.history.goBack();
+      this.props.history.push("/");
     } else {
       const newAddress = {
         ...values,
         id: cuid()
       };
       this.props.create(newAddress);
-      this.props.history.goBack();
+      //this.props.history.goBack();
+      this.props.history.push("/");
     }
   };
   handleDlete = () => {
