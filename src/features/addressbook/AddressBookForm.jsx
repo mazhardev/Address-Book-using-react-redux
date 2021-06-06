@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Segment, Form, Button, Header } from "semantic-ui-react";
 import { create, update, deletee } from "../actions";
 import cuid from "cuid";
@@ -28,64 +28,61 @@ const validate = combineValidators({
   lName: isRequired({ message: "Last Name is required" })
 });
 
-class AddressBookForm extends Component {
-  onFormSubmit = values => {
-    if (this.props.initialValues.id) {
-      this.props.update(values);
-      //this.props.history.goBack();
-      this.props.history.push("/");
+const AddressBookForm = ({ invalid, submitting, pristine, handleSubmit, initialValues, update, history, create, deletee }) => {
+  const onFormSubmit = values => {
+    if (initialValues.id) {
+      update(values);
+      //history.goBack();
+      history.push("/");
     } else {
       const newAddress = {
         ...values,
         id: cuid()
       };
-      this.props.create(newAddress);
-      //this.props.history.goBack();
-      this.props.history.push("/");
+      create(newAddress);
+      //history.goBack();
+      history.push("/");
     }
   };
-  handleDlete = () => {
-    const id = this.props.initialValues.id;
-    this.props.deletee(id);
-    this.props.history.push("/");
+  const handleDlete = () => {
+    const id = initialValues.id;
+    deletee(id);
+    history.push("/");
   };
-  render() {
-    const { invalid, submitting, pristine } = this.props;
-    return (
-      <Segment>
-        <Form onSubmit={this.props.handleSubmit(this.onFormSubmit)}>
-          <Header sub color="teal" content="Details" />
-          <Field
-            name="fName"
-            type="text"
-            component={TextInput}
-            placeholder="Give your First a name"
-          />
-          <Field
-            name="lName"
-            type="text"
-            component={TextInput}
-            placeholder="Give your Last a name"
-          />
+  return (
+    <Segment>
+      <Form onSubmit={handleSubmit(onFormSubmit)}>
+        <Header sub color="teal" content="Details" />
+        <Field
+          name="fName"
+          type="text"
+          component={TextInput}
+          placeholder="Give your First a name"
+        />
+        <Field
+          name="lName"
+          type="text"
+          component={TextInput}
+          placeholder="Give your Last a name"
+        />
 
-          <Button
-            positive
-            type="submit"
-            disabled={invalid || submitting || pristine}
-          >
-            Submit
+        <Button
+          positive
+          type="submit"
+          disabled={invalid || submitting || pristine}
+        >
+          Submit
           </Button>
-          <Button
-            onClick={this.handleDlete}
-            type="button"
-            disabled={invalid || submitting}
-            content="Delete"
-            color="red"
-          />
-        </Form>
-      </Segment>
-    );
-  }
+        <Button
+          onClick={handleDlete}
+          type="button"
+          disabled={invalid || submitting}
+          content="Delete"
+          color="red"
+        />
+      </Form>
+    </Segment>
+  );
 }
 export default connect(
   mapState,
