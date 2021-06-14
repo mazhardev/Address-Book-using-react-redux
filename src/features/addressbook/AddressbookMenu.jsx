@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Menu, Header, Input, Button,Icon } from 'semantic-ui-react'
+import { Menu, Header, Input, Button, Icon } from 'semantic-ui-react'
 
 const AddressbookMenu = () => {
-    const [addressbook, setAddressbook] = useState(
-        [
+    const [addressbook, setAddressbook] = useState([]);
+    useEffect(() => {
+        setAddressbook([
             {
                 id: "1",
                 fName: "Muhammad",
@@ -33,8 +34,8 @@ const AddressbookMenu = () => {
                 fName: "Zara",
                 lName: "Rasheed"
             }
-        ]
-    )
+        ])
+    }, [])
 
     return (
         <Menu vertical style={{ minWidth: "100%" }}>
