@@ -1,0 +1,11 @@
+body {
+  background-color: rgb(234, 234, 234) !important;
+}
+
+
+/*  styles */
+
+.ui.main.container,
+.main.segment {
+  margin-top: 4em;
+}
